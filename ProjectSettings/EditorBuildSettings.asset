@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 00db0726145786c44a9c4786b41e50b1
   - enabled: 1
+    path: Assets/Scenes/Loading screen.unity
+    guid: 45a37ee3e5355494fb7c7193d3f0ff96
+  - enabled: 1
     path: Assets/Scenes/Mirror-World.unity
     guid: f2477985d24c7394cb5459974435b7e6
   m_configObjects: {}
