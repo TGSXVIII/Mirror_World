@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetArea: {fileID: 600474779}
   Player: {fileID: 2126276918}
-  areaAdjustment: {x: 0, y: 5, z: 0}
+  areaAdjustment: {x: 0, y: 5, z: 1}
 --- !u!1 &276513196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,7 +2999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetArea: {fileID: 254972488}
   Player: {fileID: 2126276918}
-  areaAdjustment: {x: 0, y: 5, z: 0}
+  areaAdjustment: {x: 0, y: 5, z: 1}
 --- !u!114 &600474783
 MonoBehaviour:
   m_ObjectHideFlags: 0

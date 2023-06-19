@@ -45,29 +45,47 @@ public class SaveGame : MonoBehaviour
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
         if (File.Exists(savePath))
         {
+            
             string json = File.ReadAllText(savePath);
 
             // Deserialize the JSON to retrieve the saved data
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
+            
+            EventManager.StartListening(EventName.Load, LoadProgress);
 
             // Load the specified level
             SceneManager.LoadScene(data.level);
-
-            // Find the player object in the new scene
-            player = GameObject.FindGameObjectWithTag("Player");
-
-            // Find the player object in the new scene
-            inventoryManager = FindObjectOfType<InventoryManager>();
-
-            // Apply the saved data to the player
-            player.transform.position = data.position;
-            inventoryManager.LoadInventoryData(data.inventory);
-
-            Debug.Log("Game loaded.");
+            
         }
         else
         {
             Debug.Log("No save file found.");
         }
+    }
+    
+    public void LoadProgress()
+    {
+        Debug.Log("start of load");
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+
+        string json = File.ReadAllText(savePath);
+
+        // Deserialize the JSON to retrieve the saved data
+        PlayerData data = JsonUtility.FromJson<PlayerData>(json);   
+        
+        EventManager.StopListening(EventName.Load, LoadProgress);
+
+        // Find the player object in the new scene
+        //player = GameObject.FindGameObjectWithTag("Player");
+
+        // Find the player object in the new scene
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
+        // Apply the saved data to the player
+        player.transform.position = data.position;
+        inventoryManager.LoadInventoryData(data.inventory);
+
+        Debug.Log("Game loaded.");
+        
     }
 }
