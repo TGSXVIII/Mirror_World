@@ -1074,6 +1074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 1690321763323119433, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 1690740132415830305, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
       propertyPath: itemText.Array.size
       value: 6
@@ -1905,6 +1909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2126276918}
   inventoryManager: {fileID: 2018352526}
+  eventSystem: {fileID: 0}
+  audioListener: {fileID: 0}
 --- !u!61 &365261399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5993,6 +5999,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2126276918}
   inventoryManager: {fileID: 2018352526}
+  eventSystem: {fileID: 0}
+  audioListener: {fileID: 0}
 --- !u!1 &1358644379
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.SearchService;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +10,8 @@ public class SaveGame : MonoBehaviour
     // Reference to the player game object
     public GameObject player;
     public InventoryManager inventoryManager;
+    public GameObject eventSystem;
+    public AudioListener audioListener;
 
     [System.Serializable]
     public class PlayerData
@@ -27,6 +29,7 @@ public class SaveGame : MonoBehaviour
         data.level = SceneManager.GetActiveScene().name;
         data.position = player.transform.position;
         data.inventory = inventoryManager.GetInventoryData();
+        Debug.Log(data.inventory.Count);
 
         // Serialize the data to JSON
         string json = JsonUtility.ToJson(data);
@@ -35,7 +38,6 @@ public class SaveGame : MonoBehaviour
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
         File.WriteAllText(savePath, json);
 
-        Debug.Log("Game saved.");
     }
 
     // Load the player's progress
@@ -53,8 +55,11 @@ public class SaveGame : MonoBehaviour
             
             EventManager.StartListening(EventName.Load, LoadProgress);
 
+            eventSystem.SetActive(false);
+            audioListener.enabled = false;
+            
             // Load the specified level
-            SceneManager.LoadScene(data.level);
+            SceneManager.LoadScene(data.level, LoadSceneMode.Additive);
             
         }
         else
@@ -65,9 +70,9 @@ public class SaveGame : MonoBehaviour
     
     public void LoadProgress()
     {
-        Debug.Log("start of load");
+        //Debug.Log("start of load");
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
-
+        Debug.Log(savePath);
         string json = File.ReadAllText(savePath);
 
         // Deserialize the JSON to retrieve the saved data
@@ -76,16 +81,15 @@ public class SaveGame : MonoBehaviour
         EventManager.StopListening(EventName.Load, LoadProgress);
 
         // Find the player object in the new scene
-        //player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // Find the player object in the new scene
-        inventoryManager = FindObjectOfType<InventoryManager>();
-
+        inventoryManager = GameObject.FindGameObjectWithTag("inventory").GetComponent<InventoryManager>();
+        Debug.Log(data.inventory);
         // Apply the saved data to the player
         player.transform.position = data.position;
         inventoryManager.LoadInventoryData(data.inventory);
-
+        SceneManager.UnloadSceneAsync("Main Menu");
         Debug.Log("Game loaded.");
-        
     }
 }
