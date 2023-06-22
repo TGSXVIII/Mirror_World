@@ -12,12 +12,26 @@ public class Interact : MonoBehaviour
     private Vector3 originalPosition; // The original position of the player
     public Vector3 targetPosition; // The destination for the player
     public Rigidbody2D rb;
+    public float interractCooldown = 0.5f; // Adjust the cooldown duration as needed
+    private float lastInteractionTime = 0f;
 
     private void Update()
     {
         if (Input.GetKeyDown("e"))
         {
-            interact();
+            if (Time.time - lastInteractionTime >= interractCooldown)
+            {
+                // Update the last interaction time
+                lastInteractionTime = Time.time;
+
+                interact();
+            }
+
+            else
+            {
+                // The player cannot go through the door yet due to the cooldown
+                Debug.Log("Interact on cooldown.");
+            }
         }
     }
 
