@@ -12,6 +12,7 @@ public class SaveGame : MonoBehaviour
     public InventoryManager inventoryManager;
 
     [System.Serializable]
+    
     public class PlayerData
     {
         public string level;
@@ -65,6 +66,7 @@ public class SaveGame : MonoBehaviour
 
             Debug.Log("Game loaded.");
         }
+
         else
         {
             Debug.Log("No save file found.");

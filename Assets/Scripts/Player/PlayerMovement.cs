@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer sprite;
-    private CapsuleCollider2D coll;
+    private BoxCollider2D coll;
 
     private float dirX = 0f;
     private int jumpCount = 0;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        coll = GetComponent<CapsuleCollider2D>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     private async void Update()
@@ -48,10 +48,10 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(0, jumpForce);
         }
 
-        //UpdateAnimation();
+        UpdateAnimation();
     }
 
-    /*private void UpdateAnimation()
+    private void UpdateAnimation()
     {
         MovementStatus status;
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetInteger("status", (int)status);
-    }*/
+    }
 
     private bool IsGrounded()
     {
