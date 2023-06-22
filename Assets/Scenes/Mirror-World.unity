@@ -842,6 +842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 1690321763323119433, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 1690740132415830305, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
       propertyPath: itemText.Array.size
       value: 6
@@ -1872,6 +1876,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2126276918}
   inventoryManager: {fileID: 2018352526}
+  eventSystem: {fileID: 0}
+  audioListener: {fileID: 0}
+  mirrorInventory: {fileID: 1216013558}
 --- !u!61 &365261399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2877,7 +2884,7 @@ GameObject:
   - component: {fileID: 537948500}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: mirror inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6223,6 +6230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2126276918}
   inventoryManager: {fileID: 2018352526}
+  eventSystem: {fileID: 0}
+  audioListener: {fileID: 0}
+  mirrorInventory: {fileID: 1216013558}
 --- !u!114 &1350262791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7306187816412698231, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
@@ -7809,6 +7819,10 @@ PrefabInstance:
     - target: {fileID: 1690321763323119433, guid: a9d5dab5b29b8f7459d9bd349d086a91, type: 3}
       propertyPath: m_Name
       value: Mirror Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690321763323119433, guid: a9d5dab5b29b8f7459d9bd349d086a91, type: 3}
+      propertyPath: m_TagString
+      value: mirrorInventory
       objectReference: {fileID: 0}
     - target: {fileID: 1690740132415830305, guid: a9d5dab5b29b8f7459d9bd349d086a91, type: 3}
       propertyPath: itemText.Array.size

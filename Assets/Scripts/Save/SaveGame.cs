@@ -12,6 +12,7 @@ public class SaveGame : MonoBehaviour
     public InventoryManager inventoryManager;
     public GameObject eventSystem;
     public AudioListener audioListener;
+    public InventoryManager mirrorInventory;
 
     [System.Serializable]
     
@@ -20,6 +21,7 @@ public class SaveGame : MonoBehaviour
         public string level;
         public Vector3 position;
         public List<InventoryManager.Item> inventory;
+        public List<InventoryManager.Item> mirror;
     }
 
     // Save the player's progress
@@ -30,6 +32,7 @@ public class SaveGame : MonoBehaviour
         data.level = SceneManager.GetActiveScene().name;
         data.position = player.transform.position;
         data.inventory = inventoryManager.GetInventoryData();
+        data.mirror = mirrorInventory.GetInventoryData();
         Debug.Log(data.inventory.Count);
 
         // Serialize the data to JSON
@@ -87,10 +90,12 @@ public class SaveGame : MonoBehaviour
 
         // Find the player object in the new scene
         inventoryManager = GameObject.FindGameObjectWithTag("inventory").GetComponent<InventoryManager>();
+        mirrorInventory = GameObject.FindGameObjectWithTag("mirrorInventory").GetComponent<InventoryManager>();
         Debug.Log(data.inventory);
         // Apply the saved data to the player
         player.transform.position = data.position;
         inventoryManager.LoadInventoryData(data.inventory);
+        mirrorInventory.LoadInventoryData(data.mirror);
         SceneManager.UnloadSceneAsync("Main Menu");
         Debug.Log("Game loaded.");
     }
