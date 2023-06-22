@@ -12,10 +12,14 @@ public class MirrorInteract : MonoBehaviour
     public Vector3 targetPosition; //The destination for the player
     public Sprite activeMirrorSprite; //The new sprite you want to display
     public Sprite inactiveMirrorSprite; //The old sprite you want to display
+    private bool checkMirrorStatus = false;
 
     private void Update()
     {
-        MirrorAreaCheck();
+        if (inventoryManager.HasItem(requiredItemName))
+        {
+            MirrorAreaCheck();
+        }
 
         if (Input.GetKeyDown("q") && inventoryManager.HasItem(requiredItemName))
         {
@@ -38,15 +42,16 @@ public class MirrorInteract : MonoBehaviour
             }
         }
 
-        if (Counter != 0)
+        if (Counter != 0 && checkMirrorStatus == false)
         {
-            // Change the sprite to the new sprite
-            mirrorImage.sprite = activeMirrorSprite;
+            inventoryManager.updateMirrorUI(activeMirrorSprite);
+            checkMirrorStatus = true;
         }
-        else
+
+        else if (Counter == 0 && checkMirrorStatus == true)
         {
-            // Change/Keep the sprite to the old sprite
-            mirrorImage.sprite = inactiveMirrorSprite;
+            inventoryManager.updateMirrorUI(inactiveMirrorSprite);
+            checkMirrorStatus = false;
         }
     }
 

@@ -17,9 +17,14 @@ public class HideObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isHiding)
+            {
                 ExitHide();
+            }
+
             else
+            {
                 EnterHide();
+            }
         }
     }
 

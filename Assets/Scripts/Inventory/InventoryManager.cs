@@ -48,6 +48,7 @@ public class InventoryManager : MonoBehaviour
             inventory.Remove(itemName);
             inventory.Add(itemName, new Item(itemName, quantity, icon));
         }
+
         else
         {
             Debug.Log(itemName + " added");
@@ -92,6 +93,7 @@ public class InventoryManager : MonoBehaviour
         {
             return inventory[itemName].quantity;
         }
+
         else
         {
             return 0;
@@ -101,9 +103,7 @@ public class InventoryManager : MonoBehaviour
     // Update the UI to display the quantity and icon of an item
     private void UpdateUI()
     {
-
         // Clear the UI 
-
         for (int x = 0; x < itemImage.Length && x < itemText.Length; x++)
         {
             itemText[x].text = "";
@@ -111,6 +111,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         int i = 0;
+
         foreach (KeyValuePair<string, Item> item in inventory) 
         {
             itemText[i].text = item.Value.quantity.ToString();
@@ -191,6 +192,15 @@ public class InventoryManager : MonoBehaviour
         {
             AddItem(item.name, item.quantity, item.icon);  
         }
+    }
+
+    public void updateMirrorUI(Sprite mirrorSprite)
+    {
+        RemoveItem("Mirror", 1);
+
+        AddItem("Mirror", 1, mirrorSprite);
+
+        UpdateUI();
     }
 }
 

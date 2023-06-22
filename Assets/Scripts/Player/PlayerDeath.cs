@@ -10,7 +10,6 @@ public class PlayerDeath : MonoBehaviour
     //private Animator anim;
     private Rigidbody2D rb;
     public GameObject deathMenu;
-
     //[SerializeField] private AudioSource deathSoundEffect;
 
     // Start is called before the first frame update

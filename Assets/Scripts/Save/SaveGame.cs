@@ -14,6 +14,7 @@ public class SaveGame : MonoBehaviour
     public AudioListener audioListener;
 
     [System.Serializable]
+    
     public class PlayerData
     {
         public string level;
@@ -62,6 +63,7 @@ public class SaveGame : MonoBehaviour
             SceneManager.LoadScene(data.level, LoadSceneMode.Additive);
             
         }
+
         else
         {
             Debug.Log("No save file found.");
