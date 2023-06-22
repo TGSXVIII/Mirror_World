@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     // Define an item struct to hold information about items in the inventory
+    [System.Serializable]
     public struct Item
     {
         public string name;
@@ -169,7 +170,18 @@ public class InventoryManager : MonoBehaviour
 
     public List<Item> GetInventoryData()
     {
-        return inventory.Values.ToList();
+        List<Item> inventoryData = new List<Item>();
+
+        foreach (KeyValuePair<string, Item> itemEntry in inventory)
+        {
+            Item item = itemEntry.Value;
+
+            // Create a new instance of the Item struct with the same data
+            Item itemData = new Item(item.name, item.quantity, item.icon);
+            inventoryData.Add(itemData);
+        }
+        Debug.Log("inventory data: " + inventoryData.First().name + " " + inventoryData.First().quantity + " " + inventoryData.First().icon);
+        return inventoryData;
     }
 
     public void LoadInventoryData(List<Item> inventoryData)
@@ -178,10 +190,8 @@ public class InventoryManager : MonoBehaviour
 
         foreach (Item item in inventoryData)
         {
-            inventory[item.name] = item;
+            AddItem(item.name, item.quantity, item.icon);  
         }
-
-        UpdateUI();
     }
 
     public void updateMirrorUI(Sprite mirrorSprite)

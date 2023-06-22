@@ -1188,6 +1188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   inventoryManager: {fileID: 0}
+  eventSystem: {fileID: 335684193}
+  audioListener: {fileID: 435558236}
 --- !u!1 &1891895758
 GameObject:
   m_ObjectHideFlags: 0

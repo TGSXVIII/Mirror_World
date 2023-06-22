@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject mirrorToggle;
     bool isPaused = false;
 
+    private void Start()
+    {
+        EventManager.Fire(EventName.Load);
+    }
     // Update is called once per frame
     void Update()
     {
