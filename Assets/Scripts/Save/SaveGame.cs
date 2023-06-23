@@ -50,6 +50,7 @@ public class SaveGame : MonoBehaviour
         // Iterate over each object and add its state to the Items list
         foreach (GameObject obj in objects)
         {
+            //needs to check on an ID on a scrypt
             if (obj.CompareTag("item"))
             {
                 GameWorldState objectState = new GameWorldState();
@@ -128,6 +129,7 @@ public class SaveGame : MonoBehaviour
         player.transform.position = data.position;
         inventoryManager.LoadInventoryData(data.inventory);
         mirrorInventory.LoadInventoryData(data.mirror);
+        //needs to check on an ID on a scrypt
         foreach (GameWorldState state in data.items)
         {
             foreach (GameObject obj in allObjects)
