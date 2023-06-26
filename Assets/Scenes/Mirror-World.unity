@@ -667,6 +667,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 2018352526}
   eventSystem: {fileID: 0}
   audioListener: {fileID: 0}
+  mirrorInventory: {fileID: 1216013558}
 --- !u!61 &131224878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2441,6 +2442,7 @@ GameObject:
   - component: {fileID: 485127081}
   - component: {fileID: 485127084}
   - component: {fileID: 485127082}
+  - component: {fileID: 485127085}
   - component: {fileID: 485127083}
   m_Layer: 3
   m_Name: Chest key
@@ -2556,6 +2558,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &485127085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485127080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 2
 --- !u!1 &505792118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,6 +2919,7 @@ GameObject:
   - component: {fileID: 537948496}
   - component: {fileID: 537948495}
   - component: {fileID: 537948499}
+  - component: {fileID: 537948501}
   - component: {fileID: 537948500}
   m_Layer: 5
   m_Name: Canvas
@@ -3062,6 +3078,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartButton: {fileID: 1832901832}
+--- !u!114 &537948501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537948494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0
 --- !u!1 &546870770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,6 +4239,7 @@ GameObject:
   - component: {fileID: 814336862}
   - component: {fileID: 814336865}
   - component: {fileID: 814336864}
+  - component: {fileID: 814336866}
   - component: {fileID: 814336863}
   m_Layer: 3
   m_Name: Key (Mirror)
@@ -4325,6 +4355,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &814336866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814336861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 1
 --- !u!1 &824802740
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,6 +4379,7 @@ GameObject:
   - component: {fileID: 824802741}
   - component: {fileID: 824802745}
   - component: {fileID: 824802743}
+  - component: {fileID: 824802747}
   - component: {fileID: 824802746}
   - component: {fileID: 824802742}
   m_Layer: 3
@@ -4468,6 +4512,19 @@ MonoBehaviour:
   itemsToAppear:
   - {fileID: 532534536}
   inventoryManager: {fileID: 1216013558}
+--- !u!114 &824802747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824802740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 5
 --- !u!1 &854032483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6255,6 +6312,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 2018352526}
   eventSystem: {fileID: 0}
   audioListener: {fileID: 0}
+  mirrorInventory: {fileID: 0}
 --- !u!114 &1350262791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7306187816412698231, guid: c785f8ee71ed9c7449926ad8d45713f8, type: 3}
@@ -6277,6 +6335,7 @@ GameObject:
   - component: {fileID: 1358644380}
   - component: {fileID: 1358644384}
   - component: {fileID: 1358644383}
+  - component: {fileID: 1358644385}
   - component: {fileID: 1358644382}
   - component: {fileID: 1358644381}
   m_Layer: 3
@@ -6409,6 +6468,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1358644385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358644379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 4
 --- !u!1 &1369006837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7360,6 +7432,7 @@ GameObject:
   - component: {fileID: 1626261659}
   - component: {fileID: 1626261662}
   - component: {fileID: 1626261661}
+  - component: {fileID: 1626261663}
   - component: {fileID: 1626261660}
   m_Layer: 3
   m_Name: Chest key (Mirror)
@@ -7475,6 +7548,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1626261663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626261658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 3
 --- !u!1 &1635308828
 GameObject:
   m_ObjectHideFlags: 0
@@ -8321,6 +8407,7 @@ GameObject:
   - component: {fileID: 1812547988}
   - component: {fileID: 1812547989}
   - component: {fileID: 1812547992}
+  - component: {fileID: 1812547993}
   - component: {fileID: 1812547991}
   m_Layer: 3
   m_Name: Key
@@ -8421,7 +8508,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.41342354, y: 0.9559889}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 5
 --- !u!114 &1812547992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8436,6 +8523,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 2018352526}
   item: {fileID: 1812547987}
+--- !u!114 &1812547993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812547987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0
 --- !u!1 &1829772962
 GameObject:
   m_ObjectHideFlags: 0
