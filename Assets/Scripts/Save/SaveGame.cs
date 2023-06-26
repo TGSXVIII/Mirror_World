@@ -7,12 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class SaveGame : MonoBehaviour
 {
+    #region Variables
+
     // Reference to the player game object
     public GameObject player;
     public InventoryManager inventoryManager;
     public GameObject eventSystem;
     public AudioListener audioListener;
     public InventoryManager mirrorInventory;
+
+    #endregion
 
     [System.Serializable]
     

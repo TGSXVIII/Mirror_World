@@ -6,6 +6,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MonsterMovement : MonoBehaviour
 {
+    #region
+
     public GameObject player;
     private Transform playerT;
     public Transform waypointB;
@@ -14,6 +16,8 @@ public class MonsterMovement : MonoBehaviour
     public float movementSpeed = 5f;
     private Transform targetWaypoint;
     public float followDistance = 10f;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
