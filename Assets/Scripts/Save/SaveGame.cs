@@ -55,11 +55,12 @@ public class SaveGame : MonoBehaviour
         foreach (GameObject obj in objects)
         {
             //needs to check on an ID on a scrypt
-            if (obj.CompareTag("item"))
+            if (obj.GetComponent<ID>())
             {
+                ID itemIDs = obj.GetComponent<ID>();
                 GameWorldState objectState = new GameWorldState();
                 objectState.name = obj.name;
-                objectState.objectID = obj.GetInstanceID();
+                objectState.objectID = itemIDs.itemID;
                 // Check if the game object is active
                 objectState.isActive = obj.activeSelf;
                 if (objectState != null)
@@ -138,10 +139,11 @@ public class SaveGame : MonoBehaviour
         {
             foreach (GameObject obj in allObjects)
             {
-                if (obj.GetInstanceID() == state.objectID)
+                if (obj.GetComponent<ID>())
                 {
+                    ID itemIDs = obj.GetComponent<ID>();
                     Debug.Log(state.name + " " + state.isActive);
-                    if (obj != null)
+                    if (itemIDs.itemID == state.objectID)
                     {
                         Debug.Log(state.name + " " + state.isActive);
                         obj.SetActive(state.isActive);
