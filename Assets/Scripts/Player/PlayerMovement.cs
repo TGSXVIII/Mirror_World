@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             status |= MovementStatus.falling;
         }
 
-        animator.SetInteger("status", (int)status);
+        //animator.SetInteger("status", (int)status);
     }
 
     private bool IsGrounded()
