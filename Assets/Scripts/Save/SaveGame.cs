@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,16 @@ public class SaveGame : MonoBehaviour
         public Vector3 position;
         public List<InventoryManager.Item> inventory;
         public List<InventoryManager.Item> mirror;
+        public List<GameWorldState> items;
+    }
+
+    [System.Serializable]
+    public class GameWorldState
+    {
+        public string name;
+        public int objectID;
+        public bool isActive;
+        // Add any additional fields or data structures as needed
     }
 
     // Save the player's progress
@@ -37,7 +48,29 @@ public class SaveGame : MonoBehaviour
         data.position = player.transform.position;
         data.inventory = inventoryManager.GetInventoryData();
         data.mirror = mirrorInventory.GetInventoryData();
-        Debug.Log(data.inventory.Count);
+        GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+        Debug.Log(objects.Length);
+        List<GameWorldState> worldstate = new List<GameWorldState>(); 
+        // Iterate over each object and add its state to the Items list
+        foreach (GameObject obj in objects)
+        {
+            //needs to check on an ID on a scrypt
+            if (obj.GetComponent<ID>())
+            {
+                ID itemIDs = obj.GetComponent<ID>();
+                GameWorldState objectState = new GameWorldState();
+                objectState.name = obj.name;
+                objectState.objectID = itemIDs.itemID;
+                // Check if the game object is active
+                objectState.isActive = obj.activeSelf;
+                if (objectState != null)
+                {
+                    // Set other relevant state properties as needed
+                    worldstate.Add(objectState);
+                }
+            }
+        }
+        data.items = worldstate;
 
         // Serialize the data to JSON
         string json = JsonUtility.ToJson(data);
@@ -95,11 +128,30 @@ public class SaveGame : MonoBehaviour
         // Find the player object in the new scene
         inventoryManager = GameObject.FindGameObjectWithTag("inventory").GetComponent<InventoryManager>();
         mirrorInventory = GameObject.FindGameObjectWithTag("mirrorInventory").GetComponent<InventoryManager>();
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
         Debug.Log(data.inventory);
         // Apply the saved data to the player
         player.transform.position = data.position;
         inventoryManager.LoadInventoryData(data.inventory);
         mirrorInventory.LoadInventoryData(data.mirror);
+        //needs to check on an ID on a scrypt
+        foreach (GameWorldState state in data.items)
+        {
+            foreach (GameObject obj in allObjects)
+            {
+                if (obj.GetComponent<ID>())
+                {
+                    ID itemIDs = obj.GetComponent<ID>();
+                    Debug.Log(state.name + " " + state.isActive);
+                    if (itemIDs.itemID == state.objectID)
+                    {
+                        Debug.Log(state.name + " " + state.isActive);
+                        obj.SetActive(state.isActive);
+                        // Apply other relevant state properties to the object
+                    }
+                }
+            }
+        }
         SceneManager.UnloadSceneAsync("Main Menu");
         Debug.Log("Game loaded.");
     }
