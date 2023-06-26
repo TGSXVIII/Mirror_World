@@ -36,6 +36,8 @@ public class SaveGame : MonoBehaviour
         public string name;
         public int objectID;
         public bool isActive;
+        public bool isLocked;
+        public bool collider2D;
         // Add any additional fields or data structures as needed
     }
 
@@ -63,6 +65,12 @@ public class SaveGame : MonoBehaviour
                 objectState.objectID = itemIDs.itemID;
                 // Check if the game object is active
                 objectState.isActive = obj.activeSelf;
+                if (obj.GetComponent<LockedItem>())
+                {
+                    LockedItem lockedItem = obj.GetComponent<LockedItem>();
+                    objectState.isLocked = lockedItem.isLocked;
+                    objectState.collider2D = obj.GetComponent<BoxCollider2D>().enabled;
+                }
                 if (objectState != null)
                 {
                     // Set other relevant state properties as needed
@@ -142,11 +150,15 @@ public class SaveGame : MonoBehaviour
                 if (obj.GetComponent<ID>())
                 {
                     ID itemIDs = obj.GetComponent<ID>();
-                    Debug.Log(state.name + " " + state.isActive);
                     if (itemIDs.itemID == state.objectID)
                     {
                         Debug.Log(state.name + " " + state.isActive);
                         obj.SetActive(state.isActive);
+                        if (obj.GetComponent<LockedItem>())
+                        {
+                            obj.GetComponent<LockedItem>().isLocked = state.isLocked;
+                            obj.GetComponent<BoxCollider2D>().enabled = state.collider2D;
+                        }
                         // Apply other relevant state properties to the object
                     }
                 }
