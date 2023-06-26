@@ -14,7 +14,6 @@ TagManager:
   - diary
   - mirror area
   - inventory
-  - mirror inventory
   - mirrorInventory
   layers:
   - Default

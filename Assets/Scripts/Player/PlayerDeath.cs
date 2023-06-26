@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
+    #region Varibles
+
     //private Animator anim;
     private Rigidbody2D rb;
     public GameObject deathMenu;
     //[SerializeField] private AudioSource deathSoundEffect;
+
+    #endregion
 
     // Start is called before the first frame update
     private void Start()

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MirrorInteract : MonoBehaviour
 {
+    #region
+    
     public float interactDistance = 1f;
     public Image mirrorImage;
     public InventoryManager inventoryManager;
@@ -13,6 +15,8 @@ public class MirrorInteract : MonoBehaviour
     public Sprite activeMirrorSprite; //The new sprite you want to display
     public Sprite inactiveMirrorSprite; //The old sprite you want to display
     private bool checkMirrorStatus = false;
+    
+    #endregion
 
     private void Update()
     {
