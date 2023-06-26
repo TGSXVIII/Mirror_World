@@ -180,7 +180,6 @@ public class InventoryManager : MonoBehaviour
             Item itemData = new Item(item.name, item.quantity, item.icon);
             inventoryData.Add(itemData);
         }
-        Debug.Log("inventory data: " + inventoryData.First().name + " " + inventoryData.First().quantity + " " + inventoryData.First().icon);
         return inventoryData;
     }
 
