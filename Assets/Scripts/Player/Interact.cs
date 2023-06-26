@@ -7,6 +7,8 @@ using UnityEngine.TextCore.Text;
 
 public class Interact : MonoBehaviour
 {
+    #region Variables
+
     public float interactDistance = 1f;
     private bool isHidden = false; // Flag to check if the player is currently hidden
     private Vector3 originalPosition; // The original position of the player
@@ -14,6 +16,8 @@ public class Interact : MonoBehaviour
     public Rigidbody2D rb;
     public float interractCooldown = 0.5f; // Adjust the cooldown duration as needed
     private float lastInteractionTime = 0f;
+
+    #endregion
 
     private void Update()
     {
