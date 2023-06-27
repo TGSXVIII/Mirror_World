@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class gameOverScreen : MonoBehaviour
 {
@@ -17,11 +17,11 @@ public class gameOverScreen : MonoBehaviour
 
     private void restartGame()
     {
-        EditorSceneManager.LoadScene(EditorSceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void quitGame()
     {
-        
+        Application.Quit();
     }
 }
