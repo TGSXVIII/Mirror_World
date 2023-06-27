@@ -21,26 +21,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        { PauseMenu(); }
+        PauseMenu();
     }
     
     public void PauseMenu()
     {
-        pauseMenuToggle.SetActive(!pauseMenuToggle.activeSelf);
-        inventoryToggle.SetActive(!inventoryToggle.activeSelf);
-        mirrorToggle.SetActive(!mirrorToggle.activeSelf);
-
-        if (!isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = true;
-            Time.timeScale = 0;
-        }
+            pauseMenuToggle.SetActive(!pauseMenuToggle.activeSelf);
+            inventoryToggle.SetActive(!inventoryToggle.activeSelf);
+            mirrorToggle.SetActive(!mirrorToggle.activeSelf);
 
-        else if (isPaused)
-        {
-            isPaused = false;
-            Time.timeScale = 1;
+            if (!isPaused)
+            {
+                isPaused = true;
+                Time.timeScale = 0;
+            }
+
+            else if (isPaused)
+            {
+                isPaused = false;
+                Time.timeScale = 1;
+            }
         }
     }
 }
