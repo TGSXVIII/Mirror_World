@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class MirrorInteract : MonoBehaviour
 {
-    #region
+    #region Variables
     
     public float interactDistance = 1f;
-    public Image mirrorImage;
     public InventoryManager inventoryManager;
     private string requiredItemName = "Mirror";
     public Vector3 targetPosition; //The destination for the player
