@@ -2594,7 +2594,6 @@ GameObject:
   - component: {fileID: 537948496}
   - component: {fileID: 537948495}
   - component: {fileID: 537948499}
-  - component: {fileID: 537948501}
   - component: {fileID: 537948500}
   m_Layer: 5
   m_Name: Canvas
@@ -2753,19 +2752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartButton: {fileID: 1832901832}
---- !u!114 &537948501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537948494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e6de2e5349afb74091056e07e4c310f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 0
 --- !u!1 &546870770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,6 +4720,7 @@ GameObject:
   - component: {fileID: 890138441}
   - component: {fileID: 890138445}
   - component: {fileID: 890138444}
+  - component: {fileID: 890138446}
   - component: {fileID: 890138443}
   - component: {fileID: 890138442}
   - component: {fileID: 890138446}
