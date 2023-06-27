@@ -15,8 +15,8 @@ TagManager:
   - mirror area
   - inventory
   - mirrorInventory
-  - mirror inventory
   - Obstical
+  - dark area
   layers:
   - Default
   - TransparentFX
