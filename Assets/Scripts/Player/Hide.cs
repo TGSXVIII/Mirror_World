@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class Hide : MonoBehaviour
 {
+    #region Variables
+
     private bool isHidden = false; // Flag to check if the player is currently hidden
     private Vector3 originalPosition; // The original position of the player
+
+    [Header("Target positions")]
     public GameObject targetPosition; // The destination for the player
     public GameObject targetPositionDark;
+
+    [Header("Misc")]
     public Rigidbody2D rb;
     public InventoryManager inventoryManager;
     public Sprite unlitCandle;
+
+    #endregion
 
     public void hidePlayer(Collider2D collider)
     {

@@ -7,10 +7,16 @@ public class DarkArea : MonoBehaviour
 {
     #region Variables
 
+    [Header("Interact")]
     public float interactDistance = 1f;
+    
     public bool checkDarkStatus = false;
+
+    [Header("Game objects")]
     public GameObject playerLight;
     public GameObject globalLight;
+
+    [Header("Misc")]
     public InventoryManager inventoryManager;
 
     #endregion

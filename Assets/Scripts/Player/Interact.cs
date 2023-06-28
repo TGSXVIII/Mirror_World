@@ -9,15 +9,24 @@ using UnityEngine.TextCore.Text;
 public class Interact : MonoBehaviour
 {
     #region Variables
+
+    [Header("Player")]
     public GameObject player;
+
+    [Header("Interact")]
     public float interactDistance = 1f;
-    public Vector3 targetPosition; // The destination for the player
-    public Rigidbody2D rb;
     public float interractCooldown = 0.5f; // Adjust the cooldown duration as needed
+
+    [Header("Target position")]
+    public Vector3 targetPosition; // The destination for the player
+
+    [Header("Misc")]
+    public Rigidbody2D rb;
     public InventoryManager inventoryManager;
     public Sprite litCandle;
+    
+    
     private float lastInteractionTime = 0f;
-
 
     #endregion
 

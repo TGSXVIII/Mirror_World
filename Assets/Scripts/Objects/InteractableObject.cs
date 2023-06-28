@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    [Header("Game objects")]
     public GameObject targetDoor; 
     public GameObject Player;
+
+    [Header("Adjustments")]
     public Vector3 doorAdjustment;
 
     public void Interact()

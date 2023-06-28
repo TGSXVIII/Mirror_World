@@ -6,7 +6,6 @@ public class PlayerInteract : MonoBehaviour
 {
     private RaycastHit2D hit;
 
-
     void Update()
     {
         // Check for input to interact
