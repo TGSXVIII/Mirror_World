@@ -8,7 +8,6 @@ public class DarkArea : MonoBehaviour
     #region Variables
 
     public float interactDistance = 1f;
-    public bool checkDarkStatus = false;
     public GameObject playerLight;
     public GameObject globalLight;
     public InventoryManager inventoryManager;
@@ -35,24 +34,24 @@ public class DarkArea : MonoBehaviour
             }
         }
 
-        if (Counter != 0 && checkDarkStatus == false)
+        if (Counter != 0)
         {
             globalLight.GetComponent<Light2D>().enabled = true;
-            checkDarkStatus = true;
             if (inventoryManager.HasItem("Lit candle"))
             {
                 playerLight.GetComponent<Light2D>().enabled = true;
             }
-        }
-
-        else if (Counter == 0 && checkDarkStatus == true)
-        {
-            globalLight.GetComponent<Light2D>().enabled = false;
-            checkDarkStatus = false;
-            if (inventoryManager.HasItem("Lit candle"))
+            else
             {
                 playerLight.GetComponent<Light2D>().enabled = false;
             }
+        }
+
+        else if (Counter == 0)
+        {
+            globalLight.GetComponent<Light2D>().enabled = false;
+            playerLight.GetComponent<Light2D>().enabled = false;
+           
         }
     }
 }
