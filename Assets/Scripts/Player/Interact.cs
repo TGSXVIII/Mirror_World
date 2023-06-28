@@ -8,10 +8,8 @@ using UnityEngine.TextCore.Text;
 public class Interact : MonoBehaviour
 {
     #region Variables
-
+    public GameObject player;
     public float interactDistance = 1f;
-    private bool isHidden = false; // Flag to check if the player is currently hidden
-    private Vector3 originalPosition; // The original position of the player
     public Vector3 targetPosition; // The destination for the player
     public Rigidbody2D rb;
     public float interractCooldown = 0.5f; // Adjust the cooldown duration as needed
@@ -56,39 +54,8 @@ public class Interact : MonoBehaviour
             // Hide the player
             if (collider.CompareTag("hide"))
             {
-                if (!isHidden)
-                {
-                    rb.isKinematic = true;
-                    rb.bodyType = RigidbodyType2D.Static;
-                    
-                    // Store the original position of the player
-                    originalPosition = transform.position;
-
-                    // Move the player to the hideout location
-                    transform.position = targetPosition;
-
-                    // Disable the camera controller script
-                    Camera.main.GetComponent<CameraController>().enabled = false;
-
-                    // Set the flag to indicate that the player is hidden
-                    isHidden = true;
-
-                }
-
-                else
-                {
-                    rb.isKinematic = false;
-                    rb.bodyType = RigidbodyType2D.Dynamic;
-
-                    // Move the player back to the original position
-                    transform.position = originalPosition;
-
-                    // Enable the camera controller script   
-                    Camera.main.GetComponent<CameraController>().enabled = true;
-
-                    // Reset the flag to indicate that the player is no longer hidden
-                    isHidden = false;
-                }
+                Hide hide = player.GetComponent<Hide>();
+                hide.hidePlayer(collider);
             }
 
             // Move the player to another door
