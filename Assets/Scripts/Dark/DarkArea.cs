@@ -35,7 +35,7 @@ public class DarkArea : MonoBehaviour
             }
         }
 
-        if (Counter != 0 && checkDarkStatus == false)
+        if (Counter != 0)
         {
             globalLight.GetComponent<Light2D>().enabled = true;
             checkDarkStatus = true;
@@ -43,16 +43,18 @@ public class DarkArea : MonoBehaviour
             {
                 playerLight.GetComponent<Light2D>().enabled = true;
             }
-        }
-
-        else if (Counter == 0 && checkDarkStatus == true)
-        {
-            globalLight.GetComponent<Light2D>().enabled = false;
-            checkDarkStatus = false;
-            if (inventoryManager.HasItem("Lit candle"))
+            else
             {
                 playerLight.GetComponent<Light2D>().enabled = false;
             }
+        }
+
+        else if (Counter == 0)
+        {
+            globalLight.GetComponent<Light2D>().enabled = false;
+            checkDarkStatus = false;
+            playerLight.GetComponent<Light2D>().enabled = false;
+           
         }
     }
 }
