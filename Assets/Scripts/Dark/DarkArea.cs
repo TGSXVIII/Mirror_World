@@ -9,8 +9,6 @@ public class DarkArea : MonoBehaviour
 
     [Header("Interact")]
     public float interactDistance = 1f;
-    
-    public bool checkDarkStatus = false;
 
     [Header("Game objects")]
     public GameObject playerLight;

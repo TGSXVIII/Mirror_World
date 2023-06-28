@@ -2522,7 +2522,7 @@ GameObject:
   - component: {fileID: 409743908}
   m_Layer: 3
   m_Name: Closet (Dark item room)
-  m_TagString: hide
+  m_TagString: hide dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5569,7 +5569,7 @@ GameObject:
   - component: {fileID: 848442127}
   m_Layer: 3
   m_Name: Closet (Dark)
-  m_TagString: hide
+  m_TagString: hide dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14996,7 +14996,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: 1
-  checkDarkStatus: 0
   playerLight: {fileID: 1687028911}
   globalLight: {fileID: 1659996126}
   inventoryManager: {fileID: 2018352526}
