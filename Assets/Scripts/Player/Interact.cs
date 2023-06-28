@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Burst.CompilerServices;
+using UnityEditor.Rendering.BuiltIn.ShaderGraph;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -13,7 +14,10 @@ public class Interact : MonoBehaviour
     public Vector3 targetPosition; // The destination for the player
     public Rigidbody2D rb;
     public float interractCooldown = 0.5f; // Adjust the cooldown duration as needed
+    public InventoryManager inventoryManager;
+    public Sprite litCandle;
     private float lastInteractionTime = 0f;
+
 
     #endregion
 
@@ -47,12 +51,40 @@ public class Interact : MonoBehaviour
             // Pick up items
             if (collider.CompareTag("item"))
             {
-                PickUp pickUp = collider.gameObject.GetComponent<PickUp>();
-                pickUp.Item();
+                if(collider.name == "Lit candle")
+                {
+                    if (inventoryManager.HasItem("Lit candle"))
+                    {
+
+                    }
+                    else if(inventoryManager.HasItem("Unlit candle"))
+                    {
+                        inventoryManager.RemoveItem("Unlit candle", 1);
+                        inventoryManager.AddItem("Lit candle", 1, litCandle);
+                    }
+                    else
+                    {
+                        PickUp pickUp = collider.gameObject.GetComponent<PickUp>();
+                        pickUp.Item();
+                    }
+                }
+                else if(collider.name == "Wall candle")
+                {
+                    if (inventoryManager.HasItem("Unlit candle"))
+                    {
+                        inventoryManager.RemoveItem("Unlit candle", 1);
+                        inventoryManager.AddItem("Lit candle", 1, litCandle);
+                    }
+                }
+                else
+                {
+                    PickUp pickUp = collider.gameObject.GetComponent<PickUp>();
+                    pickUp.Item();
+                }
             }
 
             // Hide the player
-            if (collider.CompareTag("hide"))
+            if (collider.CompareTag("hide") || collider.CompareTag("hide dark"))
             {
                 Hide hide = player.GetComponent<Hide>();
                 hide.hidePlayer(collider);
