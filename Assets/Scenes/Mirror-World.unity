@@ -5207,7 +5207,7 @@ GameObject:
   - component: {fileID: 848442127}
   m_Layer: 3
   m_Name: Closet (Dark)
-  m_TagString: hide
+  m_TagString: hide dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14193,6 +14193,8 @@ MonoBehaviour:
   targetPosition: {x: 6.15, y: -13.72, z: 1}
   rb: {fileID: 2126276928}
   interractCooldown: 0.5
+  inventoryManager: {fileID: 2018352526}
+  litCandle: {fileID: 21300000, guid: 491559d7e02c32c4b97a9f8d0f148e9d, type: 3}
 --- !u!114 &2126276927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14283,7 +14285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: 1
-  checkDarkStatus: 0
   playerLight: {fileID: 1687028911}
   globalLight: {fileID: 1659996126}
   inventoryManager: {fileID: 2018352526}
