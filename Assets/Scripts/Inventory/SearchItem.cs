@@ -9,7 +9,7 @@ public class SearchItem : MonoBehaviour
     public GameObject[] itemsToAppear;
     public InventoryManager inventoryManager;
 
-    public void OpenChest()
+    public void Search()
     {
         foreach (GameObject item in itemsToAppear)
         {

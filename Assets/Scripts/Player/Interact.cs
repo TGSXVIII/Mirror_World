@@ -78,7 +78,7 @@ public class Interact : MonoBehaviour
                 if (!lockedItem.Unlock())
                 {
                     SearchItem searchItem = collider.gameObject.GetComponent<SearchItem>();
-                    searchItem.OpenChest();
+                    searchItem.Search();
                 }
             }
 
