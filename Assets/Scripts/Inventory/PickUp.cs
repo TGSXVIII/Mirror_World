@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [Header("Game objects")]
+    public GameObject item;
+
+    [Header("Misc")]
     //public AudioClip interactSound;
     public InventoryManager inventoryManager;
-    public GameObject item;
 
     public void Item()
     {

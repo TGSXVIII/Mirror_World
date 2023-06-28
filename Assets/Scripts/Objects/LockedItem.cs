@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LockedItem : MonoBehaviour
 {
+    [Header("Misc")]
     public InventoryManager inventoryManager;
     public string requiredItemName;
     public bool isLocked;

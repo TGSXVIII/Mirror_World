@@ -6,13 +6,23 @@ using UnityEngine.UI;
 public class MirrorInteract : MonoBehaviour
 {
     #region Variables
-    
-    public float interactDistance = 1f;
-    public InventoryManager inventoryManager;
+
+    [Header("Required item")]
     private string requiredItemName = "Mirror";
+
+    [Header("Target position")]
     public Vector3 targetPosition; //The destination for the player
+
+    [Header("Sprites")]
     public Sprite activeMirrorSprite; //The new sprite you want to display
     public Sprite inactiveMirrorSprite; //The old sprite you want to display
+
+    [Header("Interact")]
+    public float interactDistance = 1f;
+
+    [Header("Misc")]
+    public InventoryManager inventoryManager;
+    
     private bool checkMirrorStatus = false;
     
     #endregion

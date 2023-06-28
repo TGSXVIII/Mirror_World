@@ -6,10 +6,11 @@ using UnityEngine.U2D;
 
 public class SearchItem : MonoBehaviour
 {
+    [Header("Misc")]
     public GameObject[] itemsToAppear;
     public InventoryManager inventoryManager;
 
-    public void OpenChest()
+    public void Search()
     {
         foreach (GameObject item in itemsToAppear)
         {

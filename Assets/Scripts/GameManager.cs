@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour
 {
     #region Variable
 
+    [Header("Game objects")]
     public GameObject pauseMenuToggle;
     public GameObject inventoryToggle;
     public GameObject mirrorToggle;
+
     bool isPaused = false;
 
     #endregion

@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class MirrorArea : MonoBehaviour
 {
+    #region Variables
+
+    [Header("Game objects")]
     public GameObject targetArea;
     public GameObject Player;
+
+    [Header("Adjustments")]
     public Vector3 areaAdjustment;
+    
+    [Header("Interact")]
     public float mirrorCooldown = 2f; // Adjust the cooldown duration as needed
     private float lastInteractionTime = 0f;
+
+    #endregion
 
     public void Mirror()
     {

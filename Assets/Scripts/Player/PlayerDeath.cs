@@ -9,6 +9,7 @@ public class PlayerDeath : MonoBehaviour
 {
     #region Varibles
 
+    [Header("Misc")]
     //private Animator anim;
     private Rigidbody2D rb;
     public GameObject deathMenu;

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [Header("Misc")]
     public GameManager gameManager;
 
     public void ResumeGame()
