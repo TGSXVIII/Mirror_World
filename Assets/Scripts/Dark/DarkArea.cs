@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -13,6 +14,7 @@ public class DarkArea : MonoBehaviour
     [Header("Game objects")]
     public GameObject playerLight;
     public GameObject globalLight;
+    public GameObject[] candleLights;
 
     [Header("Misc")]
     public InventoryManager inventoryManager;
@@ -42,6 +44,12 @@ public class DarkArea : MonoBehaviour
         if (Counter != 0)
         {
             globalLight.GetComponent<Light2D>().enabled = true;
+            
+            foreach(GameObject candleLight in candleLights)
+            {
+                candleLight.GetComponent<Light2D>().enabled = true;
+            }
+
             if (inventoryManager.HasItem("Lit candle"))
             {
                 playerLight.GetComponent<Light2D>().enabled = true;
@@ -54,6 +62,11 @@ public class DarkArea : MonoBehaviour
 
         else if (Counter == 0)
         {
+            foreach (GameObject candleLight in candleLights)
+            {
+                candleLight.GetComponent<Light2D>().enabled = false;
+            }
+
             globalLight.GetComponent<Light2D>().enabled = false;
             playerLight.GetComponent<Light2D>().enabled = false;
            
