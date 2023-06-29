@@ -18,6 +18,7 @@ TagManager:
   - Obstical
   - dark area
   - hide dark
+  - safe zone
   layers:
   - Default
   - TransparentFX

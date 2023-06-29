@@ -1,64 +1,122 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class MonsterMovement : MonoBehaviour
 {
-    #region
+    #region Variables
 
-    public GameObject player;
-    private Transform playerT;
-    public Transform waypointB;
-    public Transform waypointA;
-    public float stopDistance = 2f;
-    public float movementSpeed = 5f;
+    [Header("Player")]
+    public Transform player;
+    private bool isFollowingPlayer;
+
+    [Header("Movement")]
+    public float moveSpeed = 5f;
+    public float waitTime = 2f;
+    public float detectionRange = 3f;
+    public float detectionAngle = 60f; // Angle within which the player is detected
+    private bool isFacingRight = true; // Track the direction the enemy is facing
+
+    [Header("Waypoints")]
     private Transform targetWaypoint;
-    public float followDistance = 10f;
+    public Transform waypointA;
+    public Transform waypointB;
+
+    [Header("Wait")]
+    private bool isWaiting;
 
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        playerT = GameObject.FindGameObjectWithTag("Player").transform;
-        targetWaypoint = waypointA; // Start by moving towards waypoint A
+        // Set the initial target waypoint
+        targetWaypoint = waypointA;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // Calculate the distance between the enemy and the player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-        // If the player is within follow distance, move towards them
-        if (distanceToPlayer <= followDistance)
+        if (!isFollowingPlayer)
         {
+            // Move towards the current target waypoint
+            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, moveSpeed * Time.deltaTime);
 
-            // Move towards the player
-            transform.position = Vector3.MoveTowards(transform.position, playerT.position, movementSpeed * Time.deltaTime);
-
-            // If the player is within attack distance, attack them
-            if (distanceToPlayer <= stopDistance)
+            // Check if the enemy has reached the target waypoint
+            if (Vector2.Distance(transform.position, targetWaypoint.position) < 0.1f)
             {
+                // If not waiting, randomly select the next target waypoint
+                if (!isWaiting)
+                {
+                    StartCoroutine(WaitAndSwitchWaypoint());
+                }
+            }
 
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+            // Check if the player is within the detection range and angle
+            if (distanceToPlayer < detectionRange && IsPlayerInDetectionAngle())
+            {
+                // Move towards the player if they are too close
+                isFollowingPlayer = true;
+            }
+
+            // Flip the sprite if changing direction
+            if (targetWaypoint.position.x > transform.position.x && !isFacingRight)
+            {
+                Flip();
+            }
+            else if (targetWaypoint.position.x < transform.position.x && isFacingRight)
+            {
+                Flip();
             }
         }
 
         else
         {
-            // Move towards the current target waypoint
-            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed * Time.deltaTime);
+            // Follow the player
+            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-            // Check if the enemy has reached the current target waypoint
-            if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
+            // Stop following the player if they move too far away
+            if (Vector2.Distance(transform.position, player.position) > detectionRange)
             {
-                // Switch to the next target waypoint
-                if (targetWaypoint == waypointA)
-                    targetWaypoint = waypointB;
-                else
-                    targetWaypoint = waypointA;
+                isFollowingPlayer = false;
+                targetWaypoint = waypointA; // Set the next target waypoint after stopping following the player
             }
         }
+    }
+
+    IEnumerator WaitAndSwitchWaypoint()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waitTime);
+        isWaiting = false;
+
+        // Randomly select the next target waypoint
+        targetWaypoint = (targetWaypoint == waypointA) ? waypointB : waypointA;
+    }
+
+    void Flip()
+    {
+        // Switch the direction the enemy is facing
+        isFacingRight = !isFacingRight;
+
+        // Flip the sprite by flipping the scale on the x-axis
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+
+    bool IsPlayerInDetectionAngle()
+    {
+        // Get the direction to the player
+        Vector2 playerDirection = (player.position - transform.position).normalized;
+
+        // Get the facing direction of the monster
+        Vector2 facingDirection = isFacingRight ? Vector2.right : Vector2.left;
+
+        // Calculate the angle between the player direction and facing direction
+        float angle = Vector2.Angle(playerDirection, facingDirection);
+
+        // Return true if the angle is within the detection angle
+        return angle <= detectionAngle * 0.5f;
     }
 }

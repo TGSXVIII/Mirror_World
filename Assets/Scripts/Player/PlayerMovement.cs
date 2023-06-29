@@ -5,18 +5,21 @@ using System.Threading.Tasks;
 public class PlayerMovement : MonoBehaviour
 {
     #region Variables
-    private Rigidbody2D rb;
-    private Animator animator;
-    private SpriteRenderer sprite;
-    private BoxCollider2D coll;
 
-    private float dirX = 0f;
-    private int jumpCount = 0;
-
+    [Header("Movement")]
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 18f;
     //[SerializeField] private AudioSource jumpSoundEffect;
+
+    private float dirX = 0f;
+    private int jumpCount = 0;
+
+    [Header("Misc")]
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer sprite;
+    private BoxCollider2D coll;
 
     private enum MovementStatus { idle, running, jumping, falling }
 
